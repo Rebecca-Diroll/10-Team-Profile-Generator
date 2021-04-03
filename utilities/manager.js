@@ -1,7 +1,7 @@
 const inquirer = require("inquirer");
 
 // Add a team manager
-addTeamManager () {
+function addTeamManager() {
     inquirer
         .prompt([
             { type: "input", name: "tm-name", message: "Enter team manager's name: ", },
