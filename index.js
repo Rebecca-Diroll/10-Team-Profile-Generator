@@ -7,7 +7,6 @@ const {addEngineer} = require("./utilities/engineer");
 const engineer = require("./models/EngineerClass");
 const {addIntern} = require("./utilities/intern");
 const intern = require("./models/InternClass");
-const Engineer = require("./models/EngineerClass");
 
 const team = [];
 
@@ -42,13 +41,17 @@ function addTeamMember() {
             switch (val.addAnother) {
                 case "Engineer":
                     addEngineer().then(answers => {
-                        const engineer = new Engineer(answers.name, answers.id, answers.email, answers.office);
+                        const engineer = new Engineer(answers.name, answers.id, answers.email, answers.github);
                         team.push(manager);
                         addEngineer();
                     });
                     break;
                 case "Intern":
-                    addIntern();
+                    addIntern().then(answers => {
+                        const intern = new Intern(answers.name, answers.id, answers.email, answers.school);
+                        team.push(manager);
+                        addIntern();
+                    });
                     break;
                 case "Finished":
                     displayTeam();
