@@ -1,3 +1,5 @@
+const inquirer = require("inquirer");
+
 const Employee = require("./EmployeeClass") 
 
 class Intern extends Employee {
@@ -13,7 +15,6 @@ class Intern extends Employee {
     getRole() {
         return "Intern";
     }
-
   }
   
   module.exports = Intern;

@@ -2,11 +2,33 @@ const inquirer = require("inquirer");
 const fs = require("fs");
 const util = require("util");
 
-const teamManager = require("./utilities/manager")
+const manager = require("./models/ManagerClass");
+const {addEngineer} = require("./utilities/engineer");
+const engineer = require("./models/EngineerClass");
+const {addIntern} = require("./utilities/intern");
+const intern = require("./models/InternClass");
 
+const team = [];
+
+// Add a team manager
+function addManager() {
+    inquirer
+        .prompt([
+            { type: "input", name: "name", message: "Enter team manager's name: ", },
+            { type: "input", name: "id", message: "Enter team manager's employee ID: ", },
+            { type: "input", name: "email", message: "Enter team manager's email: ", },
+            { type: "input", name: "office", message: "Enter team manager's office number: ",},
+        ])
+        .then (answers => {
+            const manager = new Manager(answers.name, answers.id, answers.email, answers.office);
+            team.push(manager);
+            addTeamMember();
+        })
+
+}
 
 // Ask if another team member will be added
-addTeamMember() {
+function addTeamMember() {
     inquirer
         .prompt([
             { 
@@ -17,11 +39,23 @@ addTeamMember() {
             },
         ])
         .then(val => {
-            if (val.addAnother) {
-                this.Engineer
+            switch (val.addAnother) {
+                case "Engineer":
+                    addEngineer().then(answers => {
+                        //create engineer object
+                        //add object to team array
+                        //call add team member
+                    });
+                    break;
+                case "Intern":
+                    addIntern();
+                    break;
+                case "Finished":
+                    displayTeam();
             }
         })
 }
+
 
 // Create writeFile function using promises
 const writeHTML = util.promisify(fs. writeFile);
@@ -58,8 +92,8 @@ const generateHTML = (answers) =>
 </head>
 <body>
     <header>My Team</header>
-    
-  
-
 </body>
 </html>`;
+
+addManager();
+

@@ -1,8 +1,8 @@
 const inquirer = require("inquirer");
 
 // Add an engineer
-addEngineer () {
-    inquirer
+export function addEngineer () {
+    return inquirer
         .prompt([
             { type: "input", name: "eng-name", message: "Enter engineer's name: ", },
             { type: "input", name: "eng-id", message: "Enter engineer's employee ID: ", },
@@ -10,5 +10,3 @@ addEngineer () {
             { type: "input", name: "eng-github", message: "Enter engineer's GitHub username: ",},
         ])
 }
-
-module.exports = Engineer;
