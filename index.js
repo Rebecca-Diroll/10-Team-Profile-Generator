@@ -7,6 +7,7 @@ const {addEngineer} = require("./utilities/engineer");
 const engineer = require("./models/EngineerClass");
 const {addIntern} = require("./utilities/intern");
 const intern = require("./models/InternClass");
+const Engineer = require("./models/EngineerClass");
 
 const team = [];
 
@@ -24,7 +25,6 @@ function addManager() {
             team.push(manager);
             addTeamMember();
         })
-
 }
 
 // Ask if another team member will be added
@@ -42,9 +42,9 @@ function addTeamMember() {
             switch (val.addAnother) {
                 case "Engineer":
                     addEngineer().then(answers => {
-                        //create engineer object
-                        //add object to team array
-                        //call add team member
+                        const engineer = new Engineer(answers.name, answers.id, answers.email, answers.office);
+                        team.push(manager);
+                        addEngineer();
                     });
                     break;
                 case "Intern":
