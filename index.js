@@ -1,12 +1,15 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
+const path = require("path");
 const util = require("util");
 
-const manager = require("./models/ManagerClass");
-const {addEngineer} = require("./utilities/engineer");
-const engineer = require("./models/EngineerClass");
-const {addIntern} = require("./utilities/intern");
-const intern = require("./models/InternClass");
+const Manager = require("./models/ManagerClass");
+const addEngineer = require("./utilities/engineer");
+// const {addEngineer} = require("./utilities/engineer");
+const Engineer = require("./models/EngineerClass");
+const addIntern = require("./utilities/intern");
+// const {addIntern} = require("./utilities/intern");
+const Intern = require("./models/InternClass");
 
 const team = [];
 
@@ -42,18 +45,27 @@ function addTeamMember() {
                 case "Engineer":
                     addEngineer().then(answers => {
                         const engineer = new Engineer(answers.name, answers.id, answers.email, answers.github);
-                        team.push(manager);
-                        addEngineer();
+                        team.push(engineer);
+                        // let results = memberTemplate(answers, "Engineer");
+                        // console.log(answers);
+                        // console.log(results);
+                        addTeamMember();
                     });
                     break;
                 case "Intern":
                     addIntern().then(answers => {
                         const intern = new Intern(answers.name, answers.id, answers.email, answers.school);
-                        team.push(manager);
+                        team.push(intern);
                         addIntern();
                     });
                     break;
                 case "Finished":
+                    console.log(team);
+                    for (var i = 0; i < team.length; i++) {
+                        let results = memberTemplate(team[i], "Engineer");
+                        console.log(results)
+                    }
+
                     displayTeam();
             }
         })
@@ -61,30 +73,31 @@ function addTeamMember() {
 
 
 // Create writeFile function using promises
-const writeHTML = util.promisify(fs. writeFile);
+// const writeHTML = util.promisify(fs. writeFile);
 
-function memberTemplate(answers){
+function memberTemplate(answers, role){
 
     var row5; 
 
-    if (answers.getRole() == "Manager"){
-        row5 = answers.getOfficeNumber();
-    } else if (answers.getRole() == "Engineer"){
-        row5 = answers.getGithub();
-    } else if (answers.getRole() == "Intern") {
-        row5 = answers.getSchool();
+    if (role == "Manager"){
+        row5 = answers.office;
+    } else if (role == "Engineer"){
+        row5 = answers.github;
+    } else if (role == "Intern") {
+        row5 = answers.school;
     }
 
     return   `<div class="card">
-    <div class="name">${answers.getName()}</div>
-    <div class="role">${answers.getRole()}</div>
-    <div class="identity">${answers.getId()}</div>
-    <div class="email">${answers.getEmail()}</div>
+    <div class="name">${answers.name}</div>
+    <div class="role">${role}</div>
+    <div class="identity">${answers.id}</div>
+    <div class="email">${answers.email}</div>
     <div class="row5">${row5}</div>
 </div>`
 }
 
-const generateHTML = (answers) =>
+function displayTeam(data) {
+    const generateHTML = (answers) =>
 `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -96,7 +109,8 @@ const generateHTML = (answers) =>
 <body>
     <header>My Team</header>
 </body>
-</html>`;
+</html>`
+};
 
 addManager();
 
