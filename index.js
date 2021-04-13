@@ -3,6 +3,7 @@ const fs = require("fs");
 const path = require("path");
 const util = require("util");
 
+const Employee = require("./models/EmployeeClass")
 const Manager = require("./models/ManagerClass");
 const Engineer = require("./models/EngineerClass");
 const Intern = require("./models/InternClass");
@@ -70,45 +71,94 @@ function addTeamMember() {
 }
 
 
-// Create writeFile function using promises
-// const writeHTML = util.promisify(fs. writeFile);
-
-// function memberTemplate(answers, role){
-
-//     // var row5; 
-
-//     // if (role == "Manager"){
-//     //     row5 = answers.office;
-//     // } else if (role == "Engineer"){
-//     //     row5 = answers.github;
-//     // } else if (role == "Intern") {
-//     //     row5 = answers.school;
-//     // }
-
-//     return   `<div class="card">
-//     <div class="name">${answers.name}</div>
-//     <div class="role">${role}</div>
-//     <div class="identity">${answers.id}</div>
-//     <div class="email">${answers.email}</div>
-//     <div class="row5">${answers.row5}</div>
-// </div>`
-// }
-
-function displayTeam(data) {
-    const generateHTML = (answers) =>
-`<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-  <title>Team Profile</title>
-</head>
-<body>
-    <header>My Team</header>
-</body>
-</html>`
-};
-
 addManager();
 
+
+// Create cards for each team member
+const createTeam = team => {
+
+    // Create manager card
+    const createManager = manager => {
+        return`
+        <div class="employee"
+            <div class="cardHeader">
+                <div class="cardTitle">${manager.getName()}</div>
+                <div class="cardRole">${manager.getRole()}</div>
+            </div>
+            <div> class="cardBody">
+                <div class="cardId>${manager.getId()}</div>
+                <div class="cardEmail>${manager.getEmail()}</div>
+                <div class="cardOffice>${manager.getOffice()}</div>
+            </div>
+        </div>
+        `;
+    };
+
+    // Create engineer card
+    const createEngineer = engineer => {
+        return`
+        <div class="employee"
+            <div class="cardHeader">
+                <div class="cardTitle">${engineer.getName()}</div>
+                <div class="cardRole">${engineer.getRole()}</div>
+            </div>
+            <div> class="cardBody">
+                <div class="cardId>${engineer.getId()}</div>
+                <div class="cardEmail>${engineer.getEmail()}</div>
+                <div class="cardOffice>${engineer.getGithub()}</div>
+            </div>
+        </div>
+        `;
+    };
+
+        // Create intern card
+        const createEngineer = intern => {
+            return`
+            <div class="employee"
+                <div class="cardHeader">
+                    <div class="cardTitle">${intern.getName()}</div>
+                    <div class="cardRole">${intern.getRole()}</div>
+                </div>
+                <div> class="cardBody">
+                    <div class="cardId>${intern.getId()}</div>
+                    <div class="cardEmail>${intern.getEmail()}</div>
+                    <div class="cardOffice>${intern.getSchool()}</div>
+                </div>
+            </div>
+            `;
+        };
+
+
+}
+
+
+
+// Create an html file with the team
+function 
+fs.appendFile('myTeamProfile.html', )
+
+
+module.exports = team => {
+    return `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Team</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/c502137733.js"></script>
+</head>
+<body>
+    <div class="myTeam">
+        <h1>My Team</h1>
+    </div>
+    <div>
+        <div class="teamMembers">
+            ${createTeam(team)}
+        </div>
+    </div>
+</body>
+`;
+};
