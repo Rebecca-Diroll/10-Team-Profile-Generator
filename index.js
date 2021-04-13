@@ -127,38 +127,38 @@ const createTeam = team => {
             </div>
             `;
         };
-
-
 }
 
 
 
 // Create an html file with the team
 function 
-fs.appendFile('myTeamProfile.html', )
+fs.createFile('myTeamProfile.html', html, err => {
+    err ? console.log(err) : console.log("File created: index.html");
+} )
 
 
 module.exports = team => {
     return `
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Team</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="https://kit.fontawesome.com/c502137733.js"></script>
-</head>
-<body>
-    <div class="myTeam">
-        <h1>My Team</h1>
-    </div>
-    <div>
-        <div class="teamMembers">
-            ${createTeam(team)}
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Team</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="https://kit.fontawesome.com/c502137733.js"></script>
+    </head>
+    <body>
+        <div class="myTeam">
+            <h1>My Team</h1>
         </div>
-    </div>
-</body>
-`;
+        <div>
+            <div class="teamMembers">
+                ${createTeam(team)}
+            </div>
+        </div>
+    </body>
+    `;
 };
