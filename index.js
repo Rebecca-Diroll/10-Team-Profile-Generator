@@ -70,75 +70,82 @@ function addTeamMember() {
         })
 }
 
+// Create manager card
+function createManager(manager) {
+    return`
+    <div class="employee"
+        <div class="cardHeader">
+            <div class="cardTitle">${manager.getName()}</div>
+            <div class="cardRole">${manager.getRole()}</div>
+        </div>
+        <div> class="cardBody">
+            <div class="cardId>${manager.getId()}</div>
+            <div class="cardEmail>${manager.getEmail()}</div>
+            <div class="cardOffice>${manager.getOffice()}</div>
+        </div>
+    </div>
+    `;
+};
 
-addManager();
+// Create engineer card
+const createEngineer = engineer => {
+    return`
+    <div class="employee"
+        <div class="cardHeader">
+            <div class="cardTitle">${engineer.getName()}</div>
+            <div class="cardRole">${engineer.getRole()}</div>
+        </div>
+        <div> class="cardBody">
+            <div class="cardId>${engineer.getId()}</div>
+            <div class="cardEmail>${engineer.getEmail()}</div>
+            <div class="cardOffice>${engineer.getGithub()}</div>
+        </div>
+    </div>
+    `;
+};
+
+// Create intern card
+const createIntern = intern => {
+    return`
+    <div class="employee"
+        <div class="cardHeader">
+            <div class="cardTitle">${intern.getName()}</div>
+            <div class="cardRole">${intern.getRole()}</div>
+        </div>
+        <div> class="cardBody">
+            <div class="cardId>${intern.getId()}</div>
+            <div class="cardEmail>${intern.getEmail()}</div>
+            <div class="cardOffice>${intern.getSchool()}</div>
+        </div>
+    </div>
+    `;
+};
+
 
 
 // Create cards for each team member
-const createTeam = team => {
+function createTeam() {
+    let allCards = "";
+    
+    for (let i = 0; i < team.length; i++) {
+        if (team[i] instanceof Manager) {
+            allCards = allCards + createManager(team[i])
+        } else if (team[i] instanceof Engineer) {
+            allCards = allCards + createEngineer(team[i])
+        } else if (team[i] instanceof Intern) {
+            allCards = allCards + createIntern(team[i])
+        }
 
-    // Create manager card
-    const createManager = manager => {
-        return`
-        <div class="employee"
-            <div class="cardHeader">
-                <div class="cardTitle">${manager.getName()}</div>
-                <div class="cardRole">${manager.getRole()}</div>
-            </div>
-            <div> class="cardBody">
-                <div class="cardId>${manager.getId()}</div>
-                <div class="cardEmail>${manager.getEmail()}</div>
-                <div class="cardOffice>${manager.getOffice()}</div>
-            </div>
-        </div>
-        `;
-    };
 
-    // Create engineer card
-    const createEngineer = engineer => {
-        return`
-        <div class="employee"
-            <div class="cardHeader">
-                <div class="cardTitle">${engineer.getName()}</div>
-                <div class="cardRole">${engineer.getRole()}</div>
-            </div>
-            <div> class="cardBody">
-                <div class="cardId>${engineer.getId()}</div>
-                <div class="cardEmail>${engineer.getEmail()}</div>
-                <div class="cardOffice>${engineer.getGithub()}</div>
-            </div>
-        </div>
-        `;
-    };
+        }
+        
+    }
 
-        // Create intern card
-        const createEngineer = intern => {
-            return`
-            <div class="employee"
-                <div class="cardHeader">
-                    <div class="cardTitle">${intern.getName()}</div>
-                    <div class="cardRole">${intern.getRole()}</div>
-                </div>
-                <div> class="cardBody">
-                    <div class="cardId>${intern.getId()}</div>
-                    <div class="cardEmail>${intern.getEmail()}</div>
-                    <div class="cardOffice>${intern.getSchool()}</div>
-                </div>
-            </div>
-            `;
-        };
+    return allCards;
+
 }
 
-
-
-// Create an html file with the team
-function 
-fs.createFile('myTeamProfile.html', html, err => {
-    err ? console.log(err) : console.log("File created: index.html");
-} )
-
-
-module.exports = team => {
+function writeHTML() {
     return `
     <!DOCTYPE html>
     <html lang="en">
@@ -156,9 +163,18 @@ module.exports = team => {
         </div>
         <div>
             <div class="teamMembers">
-                ${createTeam(team)}
+                ${createTeam()}
             </div>
         </div>
     </body>
     `;
 };
+
+// Create an html file with the team
+function createFile() {
+    fs.writeFile("myTeamProfile.html", writeHTML(), err => {
+        err ? console.log(err) : console.log("File created as index.html");
+    });
+};
+
+addManager();
