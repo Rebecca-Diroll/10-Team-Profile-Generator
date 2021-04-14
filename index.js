@@ -61,11 +61,12 @@ function addTeamMember() {
                     break;
                 case "Finished":
                     console.log(team);
-                    for (var i = 0; i < team.length; i++) {
-                        let results = memberTemplate(team[i]);
-                        console.log(results)
-                    }
-                    displayTeam();
+                    // for (var i = 0; i < team.length; i++) {
+                    //     let results = memberTemplate(team[i]);
+                    //     console.log(results)
+                    // }
+                    // displayTeam();
+                    createFile();
             }
         })
 }
@@ -73,51 +74,54 @@ function addTeamMember() {
 // Create manager card
 function createManager(manager) {
     return`
-    <div class="employee"
+    <div class="employee">
         <div class="cardHeader">
             <div class="cardTitle">${manager.getName()}</div>
             <div class="cardRole">${manager.getRole()}</div>
         </div>
-        <div> class="cardBody">
-            <div class="cardId>${manager.getId()}</div>
-            <div class="cardEmail>${manager.getEmail()}</div>
-            <div class="cardOffice>${manager.getOffice()}</div>
+        <div class="cardBody">
+            <div class="cardId">${manager.getId()}</div>
+            <div class="cardEmail">${manager.getEmail()}</div>
+            <div class="cardOffice">${manager.getOffice()}</div>
         </div>
     </div>
+
     `;
 };
 
 // Create engineer card
 const createEngineer = engineer => {
     return`
-    <div class="employee"
+    <div class="employee">
         <div class="cardHeader">
             <div class="cardTitle">${engineer.getName()}</div>
             <div class="cardRole">${engineer.getRole()}</div>
         </div>
-        <div> class="cardBody">
-            <div class="cardId>${engineer.getId()}</div>
-            <div class="cardEmail>${engineer.getEmail()}</div>
-            <div class="cardOffice>${engineer.getGithub()}</div>
+        <div class="cardBody">
+            <div class="cardId">${engineer.getId()}</div>
+            <div class="cardEmail">${engineer.getEmail()}</div>
+            <div class="cardOffice">${engineer.getGithub()}</div>
         </div>
     </div>
+
     `;
 };
 
 // Create intern card
 const createIntern = intern => {
     return`
-    <div class="employee"
+    <div class="employee">
         <div class="cardHeader">
             <div class="cardTitle">${intern.getName()}</div>
             <div class="cardRole">${intern.getRole()}</div>
         </div>
-        <div> class="cardBody">
-            <div class="cardId>${intern.getId()}</div>
-            <div class="cardEmail>${intern.getEmail()}</div>
-            <div class="cardOffice>${intern.getSchool()}</div>
+        <div class="cardBody">
+            <div class="cardId">${intern.getId()}</div>
+            <div class="cardEmail">${intern.getEmail()}</div>
+            <div class="cardOffice">${intern.getSchool()}</div>
         </div>
     </div>
+
     `;
 };
 
@@ -135,15 +139,9 @@ function createTeam() {
         } else if (team[i] instanceof Intern) {
             allCards = allCards + createIntern(team[i])
         }
-
-
-        }
-        
     }
-
     return allCards;
-
-}
+};
 
 function writeHTML() {
     return `
@@ -167,6 +165,7 @@ function writeHTML() {
             </div>
         </div>
     </body>
+</html>
     `;
 };
 
