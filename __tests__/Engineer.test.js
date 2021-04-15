@@ -2,7 +2,7 @@ const Engineer = require("../models/EngineerClass");
 
 describe("Engineer", () => {
 
-    const Engineer = new Engineer("Dan", "03", "dan@email.com", "gitDan");
+    const engineer = new Engineer("Dan", "03", "dan@email.com", "gitDan");
     
         it("returns Engineer role", () => {
             let role = engineer.getRole();
