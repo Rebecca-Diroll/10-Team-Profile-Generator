@@ -61,11 +61,6 @@ function addTeamMember() {
                     break;
                 case "Finished":
                     console.log(team);
-                    // for (var i = 0; i < team.length; i++) {
-                    //     let results = memberTemplate(team[i]);
-                    //     console.log(results)
-                    // }
-                    // displayTeam();
                     createFile();
             }
         })
@@ -81,7 +76,7 @@ function createManager(manager) {
         </div>
         <div class="cardBody">
             <div class="cardId"><span>ID: </span>${manager.getId()}</div>
-            <div class="cardEmail"><span>Email: </span>${manager.getEmail()}</div>
+            <div class="cardEmail"><span>Email: </span><a target="_blank" href="mailto:${manager.getEmail()}">${manager.getEmail()}</a></div>
             <div class="cardOffice"><span>Office: </span>${manager.getOffice()}</div>
         </div>
     </div>
@@ -99,7 +94,7 @@ const createEngineer = engineer => {
         </div>
         <div class="cardBody">
             <div class="cardId"><span>ID: </span>${engineer.getId()}</div>
-            <div class="cardEmail"><span>Email: </span>${engineer.getEmail()}</div>
+            <div class="cardEmail"><span>Email: </span><a target="_blank" href="mailto:${engineer.getEmail()}">${engineer.getEmail()}</a></div>
             <div class="cardOffice"><span>GitHub: </span>${engineer.getGithub()}</div>
         </div>
     </div>
@@ -116,15 +111,14 @@ const createIntern = intern => {
             <div class="cardRole">${intern.getRole()}</div>
         </div>
         <div class="cardBody">
-            <div class="cardId">${intern.getId()}</div>
-            <div class="cardEmail">${intern.getEmail()}</div>
-            <div class="cardOffice">${intern.getSchool()}</div>
+            <div class="cardId"><span>ID: </span>${intern.getId()}</div>
+            <div class="cardEmail"><span>Email: </span><a target="_blank" href="mailto:${intern.getEmail()}">${intern.getEmail()}</a></div>
+            <div class="cardOffice"><span>School: </span>${intern.getSchool()}</div>
         </div>
     </div>
 
     `;
 };
-
 
 
 // Create cards for each team member
@@ -145,25 +139,25 @@ function createTeam() {
 
 function writeHTML() {
     return `
-    <!DOCTYPE html>
-    <html lang="en">
+<!DOCTYPE html>
+<html lang="en">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Team Profile</title>
-        <link rel="stylesheet" href="/dist/style.css">
+        <link rel="stylesheet" href="./style.css">
         <script src="https://kit.fontawesome.com/c502137733.js"></script>
     </head>
     <body>
         <header class="myTeam">
             <h1>Team Profile</h1>
         </header>
-        <div>
-            <div class="teamMembers">
-                ${createTeam()}
-            </div>
+        
+        <div class="teamMembers">
+            ${createTeam()}
         </div>
+        
     </body>
 </html>
     `;
