@@ -80,9 +80,9 @@ function createManager(manager) {
             <div class="cardRole">${manager.getRole()}</div>
         </div>
         <div class="cardBody">
-            <div class="cardId">${manager.getId()}</div>
-            <div class="cardEmail">${manager.getEmail()}</div>
-            <div class="cardOffice">${manager.getOffice()}</div>
+            <div class="cardId"><span>ID: </span>${manager.getId()}</div>
+            <div class="cardEmail"><span>Email: </span>${manager.getEmail()}</div>
+            <div class="cardOffice"><span>Office: </span>${manager.getOffice()}</div>
         </div>
     </div>
 
@@ -151,14 +151,14 @@ function writeHTML() {
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <title>Team</title>
-        <link rel="stylesheet" href="style.css">
+        <title>Team Profile</title>
+        <link rel="stylesheet" href="/dist/style.css">
         <script src="https://kit.fontawesome.com/c502137733.js"></script>
     </head>
     <body>
-        <div class="myTeam">
-            <h1>My Team</h1>
-        </div>
+        <header class="myTeam">
+            <h1>Team Profile</h1>
+        </header>
         <div>
             <div class="teamMembers">
                 ${createTeam()}
@@ -171,8 +171,8 @@ function writeHTML() {
 
 // Create an html file with the team
 function createFile() {
-    fs.writeFile("myTeamProfile.html", writeHTML(), err => {
-        err ? console.log(err) : console.log("File created as index.html");
+    fs.writeFile("./dist/myTeamProfile.html", writeHTML(), err => {
+        err ? console.log(err) : console.log("File created as index.html in the dist folder.");
     });
 };
 
