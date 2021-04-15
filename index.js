@@ -98,9 +98,9 @@ const createEngineer = engineer => {
             <div class="cardRole">${engineer.getRole()}</div>
         </div>
         <div class="cardBody">
-            <div class="cardId">${engineer.getId()}</div>
-            <div class="cardEmail">${engineer.getEmail()}</div>
-            <div class="cardOffice">${engineer.getGithub()}</div>
+            <div class="cardId"><span>ID: </span>${engineer.getId()}</div>
+            <div class="cardEmail"><span>Email: </span>${engineer.getEmail()}</div>
+            <div class="cardOffice"><span>GitHub: </span>${engineer.getGithub()}</div>
         </div>
     </div>
 
