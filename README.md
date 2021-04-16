@@ -43,6 +43,11 @@ GitHub Repository: https://github.com/Rebecca-Diroll/10-Team-Profile-Generator
 Walk Through Video: https://drive.google.com/file/d/1N2BgOS5Xek5OdHpwMVENZHdvuEtYZZH3/view?usp=sharing
 
 ## Images
+Team Profile
 ![image](./assets/10-Team-Profile.jpg)
+
+User Input
 ![image](./assets/10-Team-Profile-Input.jpg)
+
+Test Results
 ![image](./assets/10-Team-Profile-Tests.jpg)
