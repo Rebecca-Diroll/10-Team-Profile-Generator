@@ -3,7 +3,7 @@ const fs = require("fs");
 const path = require("path");
 const util = require("util");
 
-const Employee = require("./models/EmployeeClass")
+const Employee = require("./models/EmployeeClass");
 const Manager = require("./models/ManagerClass");
 const Engineer = require("./models/EngineerClass");
 const Intern = require("./models/InternClass");
