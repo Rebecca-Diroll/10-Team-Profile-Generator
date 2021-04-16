@@ -16,7 +16,7 @@ This application is used to create a software team profile using node.js. A team
 ## Installation
 - Download the GitHub repository.
 - Use a terminal to run "npm init -y"
-- Use a terminal to run "npm i"
+- Use the terminal to run "npm i"
 - Run the app by entering "node index.js" in the terminal.
 - Run the tests by entering "npm run test" in the terminal.
 
