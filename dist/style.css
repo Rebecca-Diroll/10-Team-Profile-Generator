@@ -1,0 +1,57 @@
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #FCC470, #77F8FD);
+    font-size: 16px;
+}
+
+header {
+    text-align: center;
+    font-size: 24px;
+    color: gray;
+    background-color: rgba(189, 232, 239, 0.7);
+    box-shadow: 0px 0px 10px black;
+}
+
+.teamMembers {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.employee {
+    width: 250px;
+    height: 180px;
+    margin: 18px;
+    border-radius: 10px 10px;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border: gray;
+    line-height: 1.5em;
+    box-shadow: 5px 5px 5px gray;
+}
+
+.cardHeader {
+    background: rgba(254, 255, 162, 0.9);
+    border-radius: 10px 10px 0px 0px;
+    padding: 15px;
+}
+
+.cardBody {
+    padding: 15px;
+    background: rgba(255, 255, 255, 1);
+    border-radius: 0px 0px 10px 10px;
+}
+
+.cardTitle {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.cardRole {
+    font-size: 18px;
+}
+
+.cardbody {
+    font-size: 14px;
+}
