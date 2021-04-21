@@ -94,7 +94,7 @@ const createEngineer = engineer => {
         <div class="cardBody">
             <div class="cardId"><span>ID: </span>${engineer.getId()}</div>
             <div class="cardEmail"><span>Email: </span><a target="_blank" href="mailto:${engineer.getEmail()}">${engineer.getEmail()}</a></div>
-            <div class="cardOffice"><span>GitHub: </span><a target="_blank" href="github/${engineer.getGithub()}">${engineer.getGithub()}</a></div>
+            <div class="cardOffice"><span>GitHub: </span><a target="_blank" href="https://github.com/${engineer.getGithub()}">${engineer.getGithub()}</a></div>
         </div>
     </div>
     `;
