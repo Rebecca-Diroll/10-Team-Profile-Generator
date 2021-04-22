@@ -44,10 +44,10 @@ Walk Through Video: https://drive.google.com/file/d/1N2BgOS5Xek5OdHpwMVENZHdvuEt
 
 ## Images
 Team Profile
-![image](\assets\10-Team-Profile.jpg)
+![Team Profile](/assets/10-Team-Profile.jpg)
 
 User Input
-![image](\assets\10-Team-Profile-Input.jpg)
+![User Input](/assets/10-Team-Profile-Input.jpg)
 
 Test Results
-![image](\assets\10-Team-Profile-Tests.jpg)
+![Terminal Inputs](/assets/10-Team-Profile-Tests.jpg)
